@@ -5,6 +5,15 @@ type Argument struct {
 	Description string
 }
 
+func (arg *Argument) Contains(args []Argument, name string) bool  {
+	for _, arg := range args {
+		if name == arg.Name {
+			return true
+		}
+	}
+	return false
+}
+
 func (arg *Argument) GetFlags() []Argument {
 	return []Argument {
 		{ Name: "-sample", Description: "Sample of Database, Trigger, Procedure, ..." },
@@ -21,6 +30,7 @@ func (arg *Argument) GetSamples() []Argument {
 		{ Name: "db-user-roles", Description: "Database with Users and Roles" },
 		{ Name: "db-people", Description: "Database People Tables Structure" },
 		{ Name: "db-countries", Description: "All Countries and Cities" },
+		{ Name: "db-shopping-cart", Description: "All Countries and Cities" },
 		{ Name: "view", Description: "SQL View Sample" },
 		{ Name: "view-min", Description: "Minimal SQL View Sample" },
 		{ Name: "trigger", Description: "Trigger Sample" },
@@ -46,11 +56,3 @@ func (arg *Argument) GetSampleTypes() []Argument {
 	}
 }
 
-func (arg *Argument) Contains(args []Argument, name string) bool  {
-	for _, arg := range args {
-		if name == arg.Name {
-			return true
-		}
-	}
-	return false
-}

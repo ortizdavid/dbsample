@@ -10,7 +10,6 @@ type argumentTest struct {
 	expected bool
 }
 
-
 var argument helpers.Argument
 
 func TestFlags(t *testing.T) {
@@ -71,7 +70,7 @@ func TestSamplesError(t *testing.T) {
 	testCases := []argumentTest{
 		{ name: "db-hr", expected: false },
 		{ name: "db-recruitment", expected: false },
-		{ name: "db-countries", expected: false },
+		{ name: "db-countries-city", expected: false },
 		{ name: "db-history", expected: false },
 		{ name: "procedure2", expected: false },
 		{ name: "view-1", expected: false },
@@ -121,7 +120,7 @@ func TestRelationalDBs(t *testing.T) {
 		{ name: "postgres", expected: true },
 	}
 	for _, test := range testCases {
-		got := argument.Contains(argument.GetSamples(), test.name)
+		got := argument.Contains(argument.GetRelationalDBs(), test.name)
 		if got != test.expected {
 			t.Errorf("Reletional Database '%s' does not exists! Expected: %t,  Got: %t", test.name, test.expected, got)
 		}
@@ -134,7 +133,7 @@ func TestRelationalDBsError(t *testing.T) {
 		{ name: "oracle", expected: false },
 	}
 	for _, test := range testCases {
-		got := argument.Contains(argument.GetSamples(), test.name)
+		got := argument.Contains(argument.GetRelationalDBs(), test.name)
 		if got != test.expected {
 			t.Errorf("Database '%s' does not exists! Expected: %t,  Got: %t", test.name, test.expected, got)
 		}
