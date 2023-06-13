@@ -6,20 +6,26 @@ import(
 
 func TestGenerateProcedureMySQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "procedure", sType: "procedure", rdb: "mysql"},
-		{ name: "procedure-min", sType: "procedure", rdb: "mysql"},
+		{ name: "procedure", sType: "procedure", rdb: "mysql", expected: true },
+		{ name: "procedure-min", sType: "procedure", rdb: "mysql", expected: true },
 	}
 	for _, test := range testCases {
-		sampleGenerator.Generate(test.name, test.sType, test.rdb)
+		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)
+		if got != test.expected {
+			t.Errorf("Procedure '%s' not exists! Expected: %t, Got %t", test.name, test.expected, got)
+		}
 	}
 }
 
 func TestGenerateProcedurePostgreSQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "procedure", sType: "procedure", rdb: "postgres"},
-		{ name: "procedure-min", sType: "procedure", rdb: "postgres"},
+		{ name: "procedure", sType: "procedure", rdb: "postgres", expected: true },
+		{ name: "procedure-min", sType: "procedure", rdb: "postgres", expected: true },
 	}
 	for _, test := range testCases {
-		sampleGenerator.Generate(test.name, test.sType, test.rdb)
+		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)
+		if got != test.expected {
+			t.Errorf("Procedure '%s' not exists! Expected: %t, Got %t", test.name, test.expected, got)
+		}
 	}
 }
