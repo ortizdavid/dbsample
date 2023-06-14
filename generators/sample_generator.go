@@ -8,10 +8,10 @@ import (
 type SampleGenerator struct {
 }
 
-var argument *helpers.Argument
-
 
 func (generator *SampleGenerator) Generate(sampleName string, sampleType string, relationalDb string) bool {
+	var argument *helpers.Argument
+	
 	if argument.Contains(argument.GetSamples(), sampleName) == false {
 		messages.Error("Sample '"+sampleName+"' does not exists!")
 		return false

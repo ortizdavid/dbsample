@@ -3,9 +3,10 @@ package helpers
 type Argument struct {
 	Name string
 	Description string
+	ArgType string
 }
 
-func (arg *Argument) Contains(args []Argument, name string) bool  {
+func (argument *Argument) Contains(args []Argument, name string) bool {
 	for _, arg := range args {
 		if name == arg.Name {
 			return true
@@ -14,7 +15,16 @@ func (arg *Argument) Contains(args []Argument, name string) bool  {
 	return false
 }
 
-func (arg *Argument) GetFlags() []Argument {
+func (argument *Argument) ContainsSample(args []Argument, sampleName string, argType string) bool {
+	for _, arg := range args {
+		if sampleName == arg.Name && argType == arg.ArgType {
+			return true
+		}
+	}
+	return false
+}
+
+func (argument *Argument) GetFlags() []Argument {
 	return []Argument {
 		{ Name: "-sample", Description: "Sample of Database, Trigger, Procedure, ..." },
 		{ Name: "-type", Description: "Sample Type: Database, Procedure, View, Trigger" },
@@ -25,29 +35,29 @@ func (arg *Argument) GetFlags() []Argument {
 	} 
 }
 
-func (arg *Argument) GetSamples() []Argument {
+func (argument *Argument) GetSamples() []Argument {
 	return []Argument {
-		{ Name: "db-user-roles", Description: "Database with Users and Roles" },
-		{ Name: "db-people", Description: "Database People Tables Structure" },
-		{ Name: "db-countries", Description: "All Countries and Cities" },
-		{ Name: "db-shopping-cart", Description: "All Countries and Cities" },
-		{ Name: "view", Description: "SQL View Sample" },
-		{ Name: "view-min", Description: "Minimal SQL View Sample" },
-		{ Name: "trigger", Description: "Trigger Sample" },
-		{ Name: "trigger-min", Description: "Minimal Trigger Sample" },
-		{ Name: "procedure", Description: "Procedure Sample, including transactions" },
-		{ Name: "procedure-min", Description: "Minimal Procedure Sample, including transactions" },
+		{ Name: "db-user-roles", ArgType: "database", Description: "Database with Users and Roles" },
+		{ Name: "db-people", ArgType: "database", Description: "Database People Tables Structure" },
+		{ Name: "db-countries", ArgType: "database", Description: "All Countries and Cities" },
+		{ Name: "db-shopping-cart", ArgType: "database", Description: "All Countries and Cities" },
+		{ Name: "view", ArgType: "view", Description: "SQL View Sample" },
+		{ Name: "view-min", ArgType: "view", Description: "Minimal SQL View Sample" },
+		{ Name: "trigger", ArgType: "trigger", Description: "Trigger Sample" },
+		{ Name: "trigger-min", ArgType: "trigger", Description: "Minimal Trigger Sample" },
+		{ Name: "procedure", ArgType: "procedure", Description: "Procedure Sample, including transactions" },
+		{ Name: "procedure-min", ArgType: "procedure", Description: "Minimal Procedure Sample, including transactions" },
 	}
 }
 
-func (arg *Argument) GetRelationalDBs() []Argument {
+func (argument *Argument) GetRelationalDBs() []Argument {
 	return []Argument {
 		{ Name: "mysql", Description: "MySQL" },
 		{ Name: "postgres", Description: "PostgreSQL" },
 	}
 }
 
-func (arg *Argument) GetSampleTypes() []Argument {
+func (argument *Argument) GetSampleTypes() []Argument {
 	return []Argument {
 		{ Name: "database", Description: "Database" },
 		{ Name: "procedure", Description: "Stored Procedure" },
