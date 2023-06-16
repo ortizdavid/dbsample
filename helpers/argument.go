@@ -32,6 +32,7 @@ func (argument *Argument) GetFlags() []Argument {
 		{ Name: "-help", Description: "Help for Usage" },
 		{ Name: "-list-samples", Description: "List al Samples, including description" },
 		{ Name: "-list-rdbs", Description: "List all Relational Databases" },
+		{ Name: "-list-types", Description: "List all Relational Databases" },
 	} 
 }
 
