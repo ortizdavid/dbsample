@@ -1,62 +1,275 @@
 package samples
 
-func (db *DatabaseSample) GetCountriesSample(rdb string) string {
+func (db *DatabaseSample) GetPeopleSample(rdb string) string {
 	sql := ""
 	switch rdb {
 	case "mysql":
-		sql = db.createDatabase("db_countries", "mysql") + db.createCountriesTablesMySQL() + db.insertsCountries()
+		sql = db.createDatabase("db_people", "mysql") + db.createPeopleTablesMySQL() + db.insertsPeople()
 
 	case "postgres":
-		sql = db.createDatabase("db_countries", "postgres") + db.createCountriesTablesMySQL() + db.insertsCountries()
+		sql = db.createDatabase("db_people", "postgres") + db.createPeopleTablesPostgreSQL() + db.insertsPeople()
 	}
 	return sql
 }
 
 
-func (db *DatabaseSample) createCountriesTablesMySQL() string {
+func (db *DatabaseSample) createPeopleTablesMySQL() string {
 return `
 
+DROP TABLE IF EXISTS marital_statuses;
+CREATE TABLE IF NOT EXISTS marital_statuses (
+	status_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	status_name VARCHAR(100) NOT NULL UNIQUE,
+	code VARCHAR(20) UNIQUE
+);
+
+DROP TABLE IF EXISTS identification_types;
+CREATE TABLE IF NOT EXISTS identification_types (
+	type_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	type_name VARCHAR(100) NOT NULL UNIQUE,
+	code VARCHAR(20) UNIQUE
+);
+
+DROP TABLE IF EXISTS document_types;
+CREATE TABLE IF NOT EXISTS document_types (
+	type_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	type_name VARCHAR(100) NOT NULL UNIQUE,
+	code VARCHAR(20) UNIQUE
+);
+
+DROP TABLE IF EXISTS contact_types;
+CREATE TABLE IF NOT EXISTS contact_types (
+	type_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    type_name VARCHAR(30),
+    code VARCHAR(20) UNIQUE
+);
+
 DROP TABLE IF EXISTS continents;
-CREATE TABLE IF NOT EXISTS continents (
+CREATE TABLE continents (
 	continent_id INT NOT NULL PRIMARY KEY,
 	continent_name VARCHAR(100) NOT NULL UNIQUE
 );
 
 DROP TABLE IF EXISTS countries;
-CREATE TABLE IF NOT EXISTS countries (
+CREATE TABLE countries (
 	country_id INT NOT NULL PRIMARY KEY,
 	continent_id INT NOT NULL,
 	country_name VARCHAR(150) NOT NULL UNIQUE,
-    CONSTRAINT fk_continent FOREIGN KEY(country_id) REFERENCES continents(continent_id)
+    CONSTRAINT fk_continent FOREIGN KEY(continent_id) REFERENCES continents(continent_id)
+);
+
+DROP TABLE IF EXISTS person;
+CREATE TABLE IF NOT EXISTS person (
+	person_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	identification_type_id INT,
+	marital_status_id INT,
+	first_name VARCHAR(100) NOT NULL,
+	last_name VARCHAR(100) NOT NULL,
+	birth_date DATE,
+	gender ENUM('Masculino', 'Feminino'),
+	identification_number VARCHAR(30),
+	unique_id BINARY(32) DEFAULT (UUID()),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_identification_person FOREIGN KEY(identification_type_id) REFERENCES identification_types(type_id),
+	CONSTRAINT fk_marital_statuses FOREIGN KEY(marital_status_id) REFERENCES marital_statuses(status_id)
+);
+
+DROP TABLE IF EXISTS contacts;
+CREATE TABLE IF NOT EXISTS contacts (
+	contact_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    contact_type_id INT NOT NULL,
+	email VARCHAR(150) UNIQUE,
+    phone INT UNIQUE,
+    unique_id BINARY(32) DEFAULT (UUID()),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_person FOREIGN KEY(person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_contact_type FOREIGN KEY(contact_type_id) REFERENCES contact_types(type_id)
+);
+
+DROP TABLE IF EXISTS addresses;
+CREATE TABLE IF NOT EXISTS adresses (
+	address_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    country_id INT NOT NULL,
+    state VARCHAR(150),
+	city VARCHAR(150),
+    district VARCHAR(150),
+    postal_code VARCHAR(20),
+    unique_id BINARY(32) DEFAULT (UUID()),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_person FOREIGN KEY(person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_country FOREIGN KEY(country_id) REFERENCES countries(country_id)
+);
+
+DROP TABLE IF EXISTS documents;
+CREATE TABLE IF NOT EXISTS documents (
+	document_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    document_type_id INT NOT NULL,
+	file_name VARCHAR(150),
+    unique_id BINARY(32) DEFAULT (UUID()),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_person FOREIGN KEY(person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_document_type FOREIGN KEY(document_type_id) REFERENCES document_types(type_id)
 );
 
 `
 }
 
 
-func (db *DatabaseSample) createCountriesTablesPostgreSQL() string {
+func (db *DatabaseSample) createPeopleTablesPostgreSQL() string {
 return `
 
+DROP TABLE IF EXISTS marital_statuses;
+CREATE TABLE IF NOT EXISTS marital_statuses (
+	status_id SERIAL NOT NULL PRIMARY KEY,
+	status_name VARCHAR(100) NOT NULL UNIQUE,
+	code VARCHAR(20) UNIQUE
+);
+
+DROP TABLE IF EXISTS identification_types;
+CREATE TABLE IF NOT EXISTS identification_types (
+	type_id SERIAL NOT NULL PRIMARY KEY,
+	type_name VARCHAR(100) NOT NULL UNIQUE,
+	code VARCHAR(20) UNIQUE
+);
+
+DROP TABLE IF EXISTS document_types;
+CREATE TABLE IF NOT EXISTS document_types (
+	type_id SERIAL NOT NULL PRIMARY KEY,
+	type_name VARCHAR(100) NOT NULL UNIQUE,
+	code VARCHAR(20) UNIQUE
+);
+
+DROP TABLE IF EXISTS contact_types;
+CREATE TABLE IF NOT EXISTS contact_types (
+	type_id SERIAL NOT NULL PRIMARY KEY,
+    type_name VARCHAR(30),
+    code VARCHAR(20) UNIQUE
+);
+
 DROP TABLE IF EXISTS continents;
-CREATE TABLE IF NOT EXISTS continents (
+CREATE TABLE continents (
 	continent_id INT NOT NULL PRIMARY KEY,
 	continent_name VARCHAR(100) NOT NULL UNIQUE
 );
 
 DROP TABLE IF EXISTS countries;
-CREATE TABLE IF NOT EXISTS countries (
+CREATE TABLE countries (
 	country_id INT NOT NULL PRIMARY KEY,
 	continent_id INT NOT NULL,
 	country_name VARCHAR(150) NOT NULL UNIQUE,
-    CONSTRAINT fk_continent FOREIGN KEY(country_id) REFERENCES continents(continent_id)
+    CONSTRAINT fk_continent FOREIGN KEY(continent_id) REFERENCES continents(continent_id)
+);
+
+DROP TYPE IF EXISTS TYPE_GENDER;
+CREATE TYPE TYPE_GENDER AS ENUM('Masculino', 'Feminino');
+
+DROP TABLE IF EXISTS person;
+CREATE TABLE IF NOT EXISTS person (
+	person_id SERIAL NOT NULL PRIMARY KEY,
+	identification_type_id INT,
+	marital_status_id INT,
+	first_name VARCHAR(100) NOT NULL,
+	last_name VARCHAR(100) NOT NULL,
+	birth_date DATE DEFAULT CURRENT_DATE,
+	gender TYPE_GENDER,
+	identification_number VARCHAR(30),
+	unique_id uuid DEFAULT gen_random_uuid() NOT NULL UNIQUE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_identification_person FOREIGN KEY(identification_type_id) REFERENCES identification_types(type_id),
+	CONSTRAINT fk_marital_statuses FOREIGN KEY(marital_status_id) REFERENCES marital_statuses(status_id)
+);
+
+DROP TABLE IF EXISTS contacts;
+CREATE TABLE IF NOT EXISTS contacts (
+	contact_id SERIAL NOT NULL PRIMARY KEY,
+    person_id INT NOT NULL,
+    contact_type_id INT NOT NULL,
+	email VARCHAR(150) UNIQUE,
+    phone INT UNIQUE,
+    unique_id uuid DEFAULT gen_random_uuid() NOT NULL UNIQUE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_person FOREIGN KEY(person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_contact_type FOREIGN KEY(contact_type_id) REFERENCES contact_types(type_id)
+);
+
+DROP TABLE IF EXISTS addresses;
+CREATE TABLE IF NOT EXISTS adresses (
+	address_id SERIAL NOT NULL PRIMARY KEY,
+    person_id INT NOT NULL,
+    country_id INT NOT NULL,
+    state VARCHAR(150),
+	city VARCHAR(150),
+    district VARCHAR(150),
+    postal_code VARCHAR(20),
+    unique_id uuid DEFAULT gen_random_uuid() NOT NULL UNIQUE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_person FOREIGN KEY(person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_country FOREIGN KEY(country_id) REFERENCES countries(country_id)
+);
+
+DROP TABLE IF EXISTS documents;
+CREATE TABLE IF NOT EXISTS documents (
+	document_id SERIAL NOT NULL PRIMARY KEY,
+    person_id INT NOT NULL,
+    document_type_id INT NOT NULL,
+	file_name VARCHAR(150),
+    unique_id uuid DEFAULT gen_random_uuid() NOT NULL UNIQUE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_person FOREIGN KEY(person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_document_type FOREIGN KEY(document_type_id) REFERENCES document_types(type_id)
 );
 
 `
 }
 
 
-func (db *DatabaseSample) insertsCountries() string {
+func (db *DatabaseSample) insertsPeople() string {
 return `
+
+INSERT INTO marital_statuses (code, status_name) VALUES ('solteiro', 'Solteiro');  
+INSERT INTO marital_statuses (code, status_name) VALUES ('casado_com_registo', 'Casado (com registo)');  
+INSERT INTO marital_statuses (code, status_name) VALUES ('casado_sem_registo', 'Casado (sem registo)');  
+INSERT INTO marital_statuses (code, status_name) VALUES ('divorciado', 'Divorciado');  
+INSERT INTO marital_statuses (code, status_name) VALUES ('separado', 'Separado');  
+INSERT INTO marital_statuses (code, status_name) VALUES ('viuvo', 'Viúvo');  
+INSERT INTO marital_statuses (code, status_name) VALUES ('outro', 'Outro');  
+
+INSERT INTO identification_types (code, type_name) VALUES ('bi', 'Bilhete de Identidade');
+INSERT INTO identification_types (code, type_name) VALUES ('passaporte','Passaporte');
+INSERT INTO identification_types (code, type_name) VALUES ('residente', 'Cartão de Residente');
+INSERT INTO identification_types (code, type_name) VALUES ('bi-cverde', 'Bilhete de Identidade (Cabo Verde)');
+INSERT INTO identification_types (code, type_name) VALUES ('autorizacao', 'Autorização de Residência');
+INSERT INTO identification_types (code, type_name) VALUES ('bi-militar', 'Bilhete de Identidade (militar)');
+INSERT INTO identification_types (code, type_name) VALUES ('certificado', 'Certificado de Registo de Cidadão UE');
+INSERT INTO identification_types (code, type_name) VALUES ('bi-estrangeiro', 'Bilhete de Identidade (estrangeiro)');
+INSERT INTO identification_types (code, type_name) VALUES ('outro', 'Outro');
+
+INSERT INTO document_types (type_name, code) VALUES ('Diploma', 'diploma');  
+INSERT INTO document_types (type_name, code) VALUES ('Nº de Identificação', 'nif');  
+INSERT INTO document_types (type_name, code) VALUES ('Currículo Vitae', 'curriculo');  
+INSERT INTO document_types (type_name, code) VALUES ('Bilhete de Identidade', 'bilhete');  
+INSERT INTO document_types (type_name, code) VALUES ('Registo Militar', 'registo-militar');  
+INSERT INTO document_types (type_name, code) VALUES ('Documento Bancário', 'doc-bancario'); 
+INSERT INTO document_types (type_name, code) VALUES ('Registo Criminal', 'registo-criminal');  
+INSERT INTO document_types (type_name, code) VALUES ('Recenseamento Militar', 'recenseamento');  
+INSERT INTO document_types (type_name, code) VALUES ('Certificado de Habilitações', 'certificado');  
+
+INSERT INTO contact_types (type_name, code) VALUES ('Casa', 'casa');  
+INSERT INTO contact_types (type_name, code) VALUES ('pessoal', 'pessoal');  
+INSERT INTO contact_types (type_name, code) VALUES ('Empresa', 'empresa');  
+INSERT INTO contact_types (type_name, code) VALUES ('Familiar', 'familiar');  
+INSERT INTO contact_types (type_name, code) VALUES ('Outro', 'outro');  
 
 INSERT INTO continents (continent_id, continent_name) VALUES (1, 'Europa');
 INSERT INTO continents (continent_id, continent_name) VALUES (2, 'África');
@@ -307,6 +520,7 @@ INSERT INTO countries (country_id, country_name, continent_id) VALUES (97, 'Guat
 INSERT INTO countries (country_id, country_name, continent_id) VALUES (98, 'Guiana', 1);
 INSERT INTO countries (country_id, country_name, continent_id) VALUES (99, 'Guiana Francesa', 1);
 INSERT INTO countries (country_id, country_name, continent_id) VALUES (9, 'Holanda', 1);
+
 
 `
 }

@@ -38,9 +38,10 @@ func (argument *Argument) GetFlags() []Argument {
 func (argument *Argument) GetSamples() []Argument {
 	return []Argument {
 		{ Name: "db-user-roles", ArgType: "database", Description: "Database with Users and Roles" },
-		{ Name: "db-people", ArgType: "database", Description: "Database People Tables Structure" },
 		{ Name: "db-countries", ArgType: "database", Description: "All Countries and Cities" },
-		{ Name: "db-shopping-cart", ArgType: "database", Description: "All Countries and Cities" },
+		{ Name: "db-people", ArgType: "database", Description: "Database People Tables Structure" },
+		{ Name: "db-recruitment", ArgType: "database", Description: "Database for Recruitment System" },
+		{ Name: "db-sales", ArgType: "database", Description: "Database for Sales" },
 		{ Name: "view", ArgType: "view", Description: "SQL View Sample" },
 		{ Name: "view-min", ArgType: "view", Description: "Minimal SQL View Sample" },
 		{ Name: "trigger", ArgType: "trigger", Description: "Trigger Sample" },

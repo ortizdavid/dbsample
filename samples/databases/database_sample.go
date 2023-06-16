@@ -27,4 +27,3 @@ CREATE DATABASE `+dbName+`
 }
 return strDB
 }
-	

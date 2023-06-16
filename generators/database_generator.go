@@ -24,8 +24,10 @@ func (db DatabaseGenerator) Generate(sampleName string, rdb string) {
 		switch sampleName {
 		case "db-user-roles":
 			contentFile = sample.GetUserRolesSample(rdb)
-		case "db-shopping-cart":
-			contentFile = sample.GetShoppingCartSample(rdb)
+		case "db-people":
+			contentFile = sample.GetPeopleSample(rdb)
+		case "db-sales":
+			contentFile = sample.GetSalesSample(rdb)
 		case "db-countries":
 			contentFile = sample.GetCountriesSample(rdb)
 		}

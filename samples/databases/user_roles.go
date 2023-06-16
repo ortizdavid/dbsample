@@ -8,7 +8,7 @@ func (db *DatabaseSample) GetUserRolesSample(rdb string) string {
 		sql = db.createDatabase("db_user_roles", "mysql") + db.createUserRolesTablesMySQL() + db.insertsUserRoles()
 
 	case "postgres":
-		sql = db.createDatabase("db_user_roles", "postgres") + db.createUserRolesTablesMySQL() + db.insertsUserRoles()
+		sql = db.createDatabase("db_user_roles", "postgres") + db.createUserRolesTablesPostgreSQL() + db.insertsUserRoles()
 	}
 	return sql
 }
@@ -16,7 +16,7 @@ func (db *DatabaseSample) GetUserRolesSample(rdb string) string {
 func (db *DatabaseSample) createUserRolesTablesPostgreSQL() string {
 return `
 --- CREATE TABLES ---------------------------------
------------------------------------------------------
+-----------------------------------------------------------------
 CREATE TYPE TYPE_USER_STATUS AS ENUM('Yes', 'No');
 
 DROP TABLE IF EXISTS roles;
@@ -54,7 +54,6 @@ CREATE TABLE user_roles (
     CONSTRAINT fk_role FOREIGN KEY(role_id) REFERENCES roles(role_id)
 );
 
-
 `
 }
 
@@ -63,7 +62,7 @@ func (db *DatabaseSample) createUserRolesTablesMySQL() string {
 return `
 
 --- CREATE TABLES  ---------------------------
-------------------------------------------------------
+--------------------------------------------------------------
 
 DROP TABLE IF EXISTS roles;
 CREATE TABLE roles (
@@ -105,9 +104,9 @@ CREATE TABLE user_roles (
 
 
 func (db *DatabaseSample) insertsUserRoles() string {
-	return `
-
-INSERT INTO roles (role_name, description) VALUES ('super_administrator', 'Super Administrator');
+return `
+-------- INSERT VALUES ---------------------------------------------------------------------
+INSERT INTO roles (role_name, description) VALUES ('super_admin', 'Super Administrator');
 INSERT INTO roles (role_name, description) VALUES ('administrator', 'Administrator');
 INSERT INTO roles (role_name, description) VALUES ('employee', 'Employee');
 INSERT INTO roles (role_name, description) VALUES ('customer', 'Customer');
