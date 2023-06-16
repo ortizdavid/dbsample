@@ -45,10 +45,10 @@ func (argument *Argument) GetSamples() []Argument {
 		{ Name: "db-sales", ArgType: "database", Description: "Database for Sales" },
 		{ Name: "view", ArgType: "view", Description: "SQL View Sample" },
 		{ Name: "view-min", ArgType: "view", Description: "Minimal SQL View Sample" },
-		{ Name: "trigger", ArgType: "trigger", Description: "Trigger Sample" },
-		{ Name: "trigger-min", ArgType: "trigger", Description: "Minimal Trigger Sample" },
-		{ Name: "procedure", ArgType: "procedure", Description: "Procedure Sample, including transactions" },
-		{ Name: "procedure-min", ArgType: "procedure", Description: "Minimal Procedure Sample, including transactions" },
+		{ Name: "trg-lock-insert", ArgType: "trigger", Description: "Trigger to Lock Insert into a table" },
+		{ Name: "trg-min", ArgType: "trigger", Description: "Minimal Trigger Sample" },
+		{ Name: "sproc", ArgType: "procedure", Description: "Procedure Sample, including transactions" },
+		{ Name: "sproc-min", ArgType: "procedure", Description: "Minimal Procedure Sample, including transactions" },
 	}
 }
 

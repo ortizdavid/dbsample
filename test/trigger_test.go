@@ -6,8 +6,8 @@ import(
 
 func TestGenerateTriggerMySQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "trigger", sType: "trigger", rdb: "mysql", expected: true },
-		{ name: "trigger-min", sType: "trigger", rdb: "mysql", expected: true },
+		{ name: "trg-lock-insert", sType: "trigger", rdb: "mysql", expected: true },
+		{ name: "trg-min", sType: "trigger", rdb: "mysql", expected: true },
 	}
 	for _, test := range testCases {
 		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)
@@ -19,8 +19,8 @@ func TestGenerateTriggerMySQL(t *testing.T) {
 
 func TestGenerateTriggerPostgreSQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "trigger", sType: "trigger", rdb: "postgres", expected: true },
-		{ name: "trigger-min", sType: "trigger", rdb: "postgres", expected: true },
+		{ name: "trg-lock-insert", sType: "trigger", rdb: "postgres", expected: true },
+		{ name: "trg-min", sType: "trigger", rdb: "postgres", expected: true },
 	}
 	for _, test := range testCases {
 		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)

@@ -52,12 +52,12 @@ func TestSamples(t *testing.T) {
 		{ name: "db-countries", expected: true },
 		{ name: "db-recruitment", expected: true },
 		{ name: "db-sales", expected: true },
-		{ name: "procedure", expected: true },
-		{ name: "procedure-min", expected: true },
+		{ name: "sproc", expected: true },
+		{ name: "sproc-min", expected: true },
 		{ name: "view", expected: true },
 		{ name: "view-min", expected: true },
-		{ name: "trigger", expected: true },
-		{ name: "trigger-min", expected: true },
+		{ name: "trg-lock-insert", expected: true },
+		{ name: "trg-min", expected: true },
 	}
 	for _, test := range testCases {
 		got := argument.Contains(argument.GetSamples(), test.name)

@@ -6,8 +6,8 @@ import(
 
 func TestGenerateProcedureMySQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "procedure", sType: "procedure", rdb: "mysql", expected: true },
-		{ name: "procedure-min", sType: "procedure", rdb: "mysql", expected: true },
+		{ name: "sproc", sType: "procedure", rdb: "mysql", expected: true },
+		{ name: "sproc-min", sType: "procedure", rdb: "mysql", expected: true },
 	}
 	for _, test := range testCases {
 		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)
@@ -19,8 +19,8 @@ func TestGenerateProcedureMySQL(t *testing.T) {
 
 func TestGenerateProcedurePostgreSQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "procedure", sType: "procedure", rdb: "postgres", expected: true },
-		{ name: "procedure-min", sType: "procedure", rdb: "postgres", expected: true },
+		{ name: "sproc", sType: "procedure", rdb: "postgres", expected: true },
+		{ name: "sproc-min", sType: "procedure", rdb: "postgres", expected: true },
 	}
 	for _, test := range testCases {
 		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)

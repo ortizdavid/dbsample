@@ -5,23 +5,23 @@ func (trg* TriggerSample) GetTriggerMinimalSample(rdb string) string {
 	sql := ""
 	switch rdb {
 	case "mysql":
-		sql = trg.createTrigger("view_min", "mysql") + trg.createTriggerMinimalMySQL()
+		sql = trg.createTrigger("trg_min", "mysql") + trg.createTriggerMinimalMySQL()
 
 	case "postgres":
-		sql = trg.createTrigger("view_min", "postgres") + trg.createTriggerMinimalPostgreSQL() 
+		sql = trg.createTrigger("trg_min", "postgres") + trg.createTriggerMinimalPostgreSQL() 
 	}
 	return sql
 }
 
 
 func (trg* TriggerSample) createTriggerMinimalMySQL() string {
-	return `
+return `
 
 `
 }
 
 func (trg*TriggerSample) createTriggerMinimalPostgreSQL() string {
-	return `
+return `
 
 `
 }

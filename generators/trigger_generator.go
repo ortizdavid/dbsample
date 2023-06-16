@@ -22,9 +22,9 @@ func (trg TriggerGenerator) Generate(sampleName string, rdb string) {
 		fileManager.CreateSingleFolder(destFolder)
 		fileManager.CreateSingleFile(destFolder, file)
 		switch sampleName {
-		case "trigger":
-			contentFile = sample.GetTriggerCompleteSample(rdb)
-		case "trigger-min":
+		case "trg-lock-insert":
+			contentFile = sample.GetTriggerLockInsert(rdb)
+		case "trg-min":
 			contentFile = sample.GetTriggerMinimalSample(rdb)
 		}
 		fileManager.WriteFile(destFolder, file, contentFile)
