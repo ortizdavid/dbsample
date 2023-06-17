@@ -6,7 +6,6 @@ func (trg* TriggerSample) GetTriggerMinimalSample(rdb string) string {
 	switch rdb {
 	case "mysql":
 		sql = trg.createTrigger("trg_min", "mysql") + trg.createTriggerMinimalMySQL()
-
 	case "postgres":
 		sql = trg.createTrigger("trg_min", "postgres") + trg.createTriggerMinimalPostgreSQL() 
 	}

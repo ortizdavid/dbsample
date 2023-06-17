@@ -5,7 +5,6 @@ func (db *DatabaseSample) GetSalesSample(rdb string) string {
 	switch rdb {
 	case "mysql":
 		sql = db.createDatabase("db_sales", "mysql") + db.createSalesTablesMySQL() + db.insertsSales()
-
 	case "postgres":
 		sql = db.createDatabase("db_sales", "postgres") + db.createSalesTablesPostgreSQL() + db.insertsSales()
 	}

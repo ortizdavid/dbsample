@@ -5,7 +5,6 @@ func (db *DatabaseSample) GetPeopleSample(rdb string) string {
 	switch rdb {
 	case "mysql":
 		sql = db.createDatabase("db_people", "mysql") + db.createPeopleTablesMySQL() + db.insertsPeople()
-
 	case "postgres":
 		sql = db.createDatabase("db_people", "postgres") + db.createPeopleTablesPostgreSQL() + db.insertsPeople()
 	}

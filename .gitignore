@@ -1,3 +1,5 @@
 databases-for-generate/
 
-*.build
+bin/
+
+

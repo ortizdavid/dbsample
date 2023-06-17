@@ -5,7 +5,6 @@ func (db *DatabaseSample) GetCountriesSample(rdb string) string {
 	switch rdb {
 	case "mysql":
 		sql = db.createDatabase("db_countries", "mysql") + db.createCountriesTablesMySQL() + db.insertsCountries()
-
 	case "postgres":
 		sql = db.createDatabase("db_countries", "postgres") + db.createCountriesTablesMySQL() + db.insertsCountries()
 	}

@@ -5,7 +5,8 @@ type TriggerSample struct {
 
 
 func (trg *TriggerSample) createTrigger(trgName string, rdb string) string {
-return `
+return `-- STORED PROCEDURE: `+trgName+`;
+-- RELATIONAL DATABASE: `+rdb+`
 
 `
 }

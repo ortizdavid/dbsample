@@ -6,7 +6,6 @@ func (db *DatabaseSample) GetUserRolesSample(rdb string) string {
 	switch rdb {
 	case "mysql":
 		sql = db.createDatabase("db_user_roles", "mysql") + db.createUserRolesTablesMySQL() + db.insertsUserRoles()
-
 	case "postgres":
 		sql = db.createDatabase("db_user_roles", "postgres") + db.createUserRolesTablesPostgreSQL() + db.insertsUserRoles()
 	}
