@@ -2,7 +2,7 @@ package samples
 
 
 func (proc *ProcedureSample) GetProcedureMinimalSample(rdb string) string {
-	sql := ""
+	sql := ``
 	switch rdb {
 	case "mysql":
 		sql = proc.createProcedure("sp_copy_data", "mysql") + proc.createProcedureMinimalMySQL()
