@@ -4,11 +4,9 @@ type ProcedureSample struct {
 }
 
 func (proc *ProcedureSample) createProcedure(procName string, rdb string) string {
-return `
+return `-- STORED PROCEDURE: `+procName+`;
 
-DROP PROCEDURE IF EXISTS `+procName+`;
-
-CREATE PROCEDURE `+procName+`
+-- RELATIONAL DATABASE: `+rdb+`
 
 `
 }

@@ -1,28 +1,28 @@
 package samples
 
 
-func (proc *ProcedureSample) GetProcedureCompleteSample(rdb string) string {
+func (proc *ProcedureSample) GetProcedureMinimalSample(rdb string) string {
 	sql := ""
 	switch rdb {
 	case "mysql":
-		sql = proc.createProcedure("proc_complete", "mysql") + proc.createProcedureCompleteMySQL()
+		sql = proc.createProcedure("proc_minimal", "mysql") + proc.createProcedureMinimalMySQL()
 
 	case "postgres":
-		sql = proc.createProcedure("proc_complete", "postgres") + proc.createProcedureCompletePostgreSQL() 
+		sql = proc.createProcedure("proc_minimal", "postgres") + proc.createProcedureMinimalPostgreSQL() 
 	}
 	return sql
 }
 
 
-func (proc *ProcedureSample) createProcedureCompleteMySQL() string {
-	return `
+func (proc *ProcedureSample) createProcedureMinimalMySQL() string {
+return `
 
 `
 }
 
 
-func (proc *ProcedureSample) createProcedureCompletePostgreSQL() string {
-	return `
+func (proc *ProcedureSample) createProcedureMinimalPostgreSQL() string {
+return `
 
 `
 }

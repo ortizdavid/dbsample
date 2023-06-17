@@ -22,9 +22,9 @@ func (proc ProcedureGenerator) Generate(sampleName string, rdb string) {
 		fileManager.CreateSingleFolder(destFolder)
 		fileManager.CreateSingleFile(destFolder, file)
 		switch sampleName {
-		case "sproc":
-			contentFile = sample.GetProcedureCompleteSample(rdb)
-		case "sproc-min":
+		case "sp-product-stock":
+			contentFile = sample.GetProcedureProductStockSample(rdb)
+		case "sp-min":
 			contentFile = sample.GetProcedureMinimalSample(rdb)
 		}
 		fileManager.WriteFile(destFolder, file, contentFile)
