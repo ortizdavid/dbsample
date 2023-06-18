@@ -12,7 +12,7 @@ func main() {
 	cliArgs := os.Args
 	numArgs := len(cliArgs)
 
-	if numArgs < 2 {
+	if numArgs <= 1 {
 		helpers.PrintUsage()
 
 	} else {

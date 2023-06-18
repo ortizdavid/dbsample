@@ -1,6 +1,6 @@
 # DBSample
 
-Tool for generate database Samples
+Command Line Application to generate database templates/examples.
 
 ## Principal Features
 - Generate database templates
@@ -10,8 +10,41 @@ Tool for generate database Samples
 - Generate Triggers
 
 
+# Usage
+dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DATABASE>**
 
-## Generating Databases:
+
+
+## Samples
+- **db-user-roles** -  Database with Users and Roles
+- **db-countries** -  All Countries and Cities
+- **db-people** -  Database People Tables Structure
+- **db-recruitment** -  Database for Recruitment System
+- **db-sales** -  Database for Sales
+- **view-product-data** -  SQL View Product normalizated data Sample
+- **view-min** -  Minimal SQL View Sample
+- **trg-lock-insert** -  Trigger to Lock Insert into a table
+- **trg-min** -  Minimal Trigger Sample
+- **sp-product-stock** -  Product Stock Procedure Sample, including transactions
+- **sp-min** -  Minimal Procedure Sample, including transactions
+
+
+
+# Sample Types
+- **database** - Database
+- **procedure** - Stored Procedure
+- **trigger** - Trigger
+- **view** - SQL View
+
+
+
+# Relational Databases
+- **mysql** - MySQL        
+- **postgres** - PostgreSQL
+
+
+
+## Generating Databases
 ```console
 dbsample -sample db-countries -type database -rdb postgres
 ```
