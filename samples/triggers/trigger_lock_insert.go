@@ -15,7 +15,6 @@ func (trg *TriggerSample) GetTriggerLockInsert(rdb string) string {
 
 func (trg *TriggerSample) createTriggerLockInsertMySQL() string {
 return `
-
 --- TRIGGER: trigger_lock_insert_settings
 --- RDBMS MYSQL---
 
@@ -64,7 +63,6 @@ DELIMITER ;
 
 func (trg *TriggerSample) createTriggerLockInsertPostgreSQL() string {
 return `
-
 --- TRIGGER: trigger_lock_insert_settings
 --- RDBMS MYSQL---
 

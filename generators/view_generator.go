@@ -22,14 +22,14 @@ func (view ViewGenerator) Generate(sampleName string, rdb string) {
 		fileManager.CreateSingleFolder(destFolder)
 		fileManager.CreateSingleFile(destFolder, file)
 		switch sampleName {
-		case "view":
-			contentFile = sample.GetViewCompleteSample(rdb)
+		case "view-product-data":
+			contentFile = sample.GetViewProductDataSample(rdb)
 		case "view-min":
 			contentFile = sample.GetViewMinimalSample(rdb)
 		}
 		fileManager.WriteFile(destFolder, file, contentFile)
 		messages.Success("View '" + sampleName + "' Generated Successfully!")
 	} else {
-		messages.Error("View '"+sampleName+"' does not exists")
+		messages.Error("View '"+sampleName+"' does not exists!")
 	}
 }

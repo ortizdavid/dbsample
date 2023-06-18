@@ -30,6 +30,6 @@ func (trg TriggerGenerator) Generate(sampleName string, rdb string) {
 		fileManager.WriteFile(destFolder, file, contentFile)
 		messages.Success("Procedure '" + sampleName + "' Generated Successfully!")
 	} else {
-		messages.Error("Trigger '"+sampleName+"' does not exists")
+		messages.Error("Trigger '"+sampleName+"' does not exists!")
 	}
 }

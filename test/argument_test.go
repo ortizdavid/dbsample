@@ -54,7 +54,7 @@ func TestSamples(t *testing.T) {
 		{ name: "db-sales", expected: true },
 		{ name: "sp-procuct-stock", expected: true },
 		{ name: "sp-min", expected: true },
-		{ name: "view", expected: true },
+		{ name: "view-product-data", expected: true },
 		{ name: "view-min", expected: true },
 		{ name: "trg-lock-insert", expected: true },
 		{ name: "trg-min", expected: true },

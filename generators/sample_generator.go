@@ -14,12 +14,15 @@ func (generator *SampleGenerator) Generate(sampleName string, sampleType string,
 	
 	if argument.Contains(argument.GetSamples(), sampleName) == false {
 		messages.Error("Sample '"+sampleName+"' does not exists!")
+		helpers.PrintSamples()
 		return false
 	} else if argument.Contains(argument.GetSampleTypes(), sampleType) == false {
-		messages.Error("Sample Type'"+sampleType+"' does not exists!")
+		messages.Error("Sample Type '"+sampleType+"' does not exists!")
+		helpers.PrintSampleTypes()
 		return false
 	} else if argument.Contains(argument.GetRelationalDBs(), relationalDb) == false {
 		messages.Error("Relational Database '"+sampleName+"' does not exists!")
+		helpers.PrintRelationalDBs()
 		return false
 	}  else {
 		switch sampleType {

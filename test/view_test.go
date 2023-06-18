@@ -6,7 +6,7 @@ import(
 
 func TestGenerateViewMySQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "view", sType: "view", rdb: "mysql", expected: true },
+		{ name: "view-product-data", sType: "view", rdb: "mysql", expected: true },
 		{ name: "view-min", sType: "view", rdb: "mysql", expected: true },
 	}
 	for _, test := range testCases {
@@ -19,7 +19,7 @@ func TestGenerateViewMySQL(t *testing.T) {
 
 func TestGenerateViewPostgreSQL(t *testing.T) {
 	testCases := []sampleTest{
-		{ name: "view", sType: "view", rdb: "postgres", expected: true },
+		{ name: "view-product-data", sType: "view", rdb: "postgres", expected: true },
 		{ name: "view-min", sType: "view", rdb: "postgres", expected: true },
 	}
 	for _, test := range testCases {
