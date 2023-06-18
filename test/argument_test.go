@@ -18,6 +18,7 @@ func TestFlags(t *testing.T) {
 		{ name: "-rdb", expected: true },
 		{ name: "-type", expected: true },
 		{ name: "-help", expected: true },
+		{ name: "-examples", expected: true },
 		{ name: "-list-samples", expected: true },
 		{ name: "-list-rdbs", expected: true },
 	}

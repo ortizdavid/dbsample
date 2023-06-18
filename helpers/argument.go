@@ -14,6 +14,7 @@ func (argument *Argument) GetFlags() []Argument {
 		{ Name: "-type", Description: "Sample Type: Database, Procedure, View, Trigger" },
 		{ Name: "-rdb", Description: "Relational Database {mysql, postgres}" },
 		{ Name: "-help", Description: "Help for Usage" },
+		{ Name: "-examples", Description: "Help for Examples" },
 		{ Name: "-list-samples", Description: "List al Samples, including description" },
 		{ Name: "-list-rdbs", Description: "List all Relational Databases" },
 		{ Name: "-list-types", Description: "List all Relational Databases" },

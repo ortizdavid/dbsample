@@ -84,7 +84,6 @@ dbsample -sample sp-min -type procedure -rdb mysql
 ```
 
 
-
 ## Generating Triggers
 ```console
 dbsample -sample trg-lock-insert -type trigger -rdb postgres
@@ -93,3 +92,31 @@ dbsample -sample trg-lock-insert -type trigger -rdb postgres
 ```console
 dbsample -sample trg-min -type trigger -rdb mysql
 ```
+
+
+## Help Comand
+```console
+dbsample -help
+```
+
+## Examples
+```console
+dbsample -examples
+```
+
+## List Samples
+```console
+dbsample -list-samples
+```
+
+## List Sample types
+```console
+dbsample -list-types
+```
+
+## List Databases
+```console
+dbsample -list-rdbs
+```
+
+

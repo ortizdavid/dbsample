@@ -20,11 +20,17 @@ func main() {
 		if numArgs == 2 &&  cliArgs[2] == "-help" {
 			helpers.PrintHelp()
 
+		} else if numArgs == 2 &&  cliArgs[2] == "-examples" {
+			helpers.PrintExamples()
+	
 		} else if numArgs == 2 &&  cliArgs[2] == "-list-samples" {
 			helpers.PrintSamples()
 
 		} else if numArgs == 2 &&  cliArgs[2] == "-list-types" {
 			helpers.PrintSampleTypes()
+
+		} else if numArgs == 2 &&  cliArgs[2] == "-list-rdbs" {
+			helpers.PrintRelationalDBs()
 
 		} else if numArgs == 7 {
 			sampleName := cliArgs[2]
