@@ -16,3 +16,7 @@ Run these commands in terminal
 # GENERATING TRIGGERS
 - dbsample -sample trg-lock-insert -type trigger -rdb postgres
 - dbsample -sample trg-min -type trigger -rdb mysql
+
+# GENERATING VIEWS
+- dbsample -sample view-user-data -type trigger -rdb postgres
+- dbsample -sample view-min -type trigger -rdb mysql
