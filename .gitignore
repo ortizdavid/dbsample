@@ -1,5 +1,7 @@
 databases-for-generate/
 
 bin/
+cmd/
+
 
 

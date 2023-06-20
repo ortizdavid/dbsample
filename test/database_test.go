@@ -5,7 +5,7 @@ import (
 )
 
 func TestGenerateDatabaseMySQL(t *testing.T) {
-	testCases := []sampleTest{
+	testCases := []sampleTest {
 		{ name: "db-user-roles", sType: "database", rdb: "mysql", expected: true },
 		{ name: "db-countries", sType: "database", rdb: "mysql", expected: true },
 		{ name: "db-people", sType: "database", rdb: "mysql", expected: true },
@@ -20,7 +20,7 @@ func TestGenerateDatabaseMySQL(t *testing.T) {
 }
 
 func TestGenerateDatabasePostgreSQL(t *testing.T) {
-	testCases := []sampleTest{
+	testCases := []sampleTest {
 		{ name: "db-user-roles", sType: "database", rdb: "postgres", expected: true },
 		{ name: "db-countries", sType: "database", rdb: "postgres", expected: true },
 		{ name: "db-people", sType: "database", rdb: "postgres", expected: true },

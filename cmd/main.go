@@ -43,5 +43,4 @@ func main() {
 			helpers.PrintHelp()
 		}
 	}
-
 }

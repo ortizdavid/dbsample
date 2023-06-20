@@ -28,18 +28,13 @@ func (generator *SampleGenerator) Generate(sampleName string, sampleType string,
 		switch sampleType {
 		case "database":
 		    DatabaseGenerator{}.Generate(sampleName, relationalDb)
-			break
 		case "view":
 			ViewGenerator{}.Generate(sampleName, relationalDb)
-			break
 		case "procedure":
 			ProcedureGenerator{}.Generate(sampleName, relationalDb)
-			break
 		case "trigger":
 			TriggerGenerator{}.Generate(sampleName, relationalDb)
-			break
 		}
 		return true
 	}
-	
 }

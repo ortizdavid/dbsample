@@ -2,7 +2,9 @@
 
 Command Line Application to generate database templates/examples.
 
-## Principal Features
+
+
+## Main Features
 - Generate database templates
 - Generate normalizated database templates
 - Generate Stored Procedures, incluinng transactions
@@ -10,12 +12,27 @@ Command Line Application to generate database templates/examples.
 - Generate Triggers
 
 
-# Usage
+
+## Installation
+- Download binary file:
+  + [Windows](bin/windows)
+  + [Linux](bin/linux)
+  + [Mac Os](bin/macos)
+  + [Free BSD](bin/freebsd)
+  + [Solaris](bin/solaris)
+- Add to **Path** Environment variable
+- Run command: 
+`
+dbsample
+`
+
+
+## Usage
 dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DATABASE>**
 
 
 
-## Samples
+### Samples
 - **db-user-roles** -  Database with Users and Roles
 - **db-countries** -  All Countries and Cities
 - **db-people** -  Database People Tables Structure
@@ -30,7 +47,7 @@ dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DA
 
 
 
-# Sample Types
+## Sample Types
 - **database** - Database
 - **procedure** - Stored Procedure
 - **trigger** - Trigger
@@ -38,7 +55,7 @@ dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DA
 
 
 
-# Relational Databases
+## Relational Databases
 - **mysql** - MySQL        
 - **postgres** - PostgreSQL
 

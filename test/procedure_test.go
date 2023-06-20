@@ -5,7 +5,7 @@ import(
 )
 
 func TestGenerateProcedureMySQL(t *testing.T) {
-	testCases := []sampleTest{
+	testCases := []sampleTest {
 		{ name: "sp-product-stock", sType: "procedure", rdb: "mysql", expected: true },
 		{ name: "sp-min", sType: "procedure", rdb: "mysql", expected: true },
 	}
@@ -18,7 +18,7 @@ func TestGenerateProcedureMySQL(t *testing.T) {
 }
 
 func TestGenerateProcedurePostgreSQL(t *testing.T) {
-	testCases := []sampleTest{
+	testCases := []sampleTest {
 		{ name: "sp-product-stock", sType: "procedure", rdb: "postgres", expected: true },
 		{ name: "sp-min", sType: "procedure", rdb: "postgres", expected: true },
 	}
