@@ -17,19 +17,19 @@ func main() {
 
 	} else {
 		
-		if numArgs == 2 &&  cliArgs[2] == "-help" {
+		if numArgs == 2 &&  cliArgs[1] == "-help" {
 			helpers.PrintHelp()
 
-		} else if numArgs == 2 &&  cliArgs[2] == "-examples" {
+		} else if numArgs == 2 &&  cliArgs[1] == "-examples" {
 			helpers.PrintExamples()
 	
-		} else if numArgs == 2 &&  cliArgs[2] == "-list-samples" {
+		} else if numArgs == 2 &&  cliArgs[1] == "-list-samples" {
 			helpers.PrintSamples()
 
-		} else if numArgs == 2 &&  cliArgs[2] == "-list-types" {
+		} else if numArgs == 2 &&  cliArgs[1] == "-list-types" {
 			helpers.PrintSampleTypes()
 
-		} else if numArgs == 2 &&  cliArgs[2] == "-list-rdbs" {
+		} else if numArgs == 2 &&  cliArgs[1] == "-list-rdbs" {
 			helpers.PrintRelationalDBs()
 
 		} else if numArgs == 7 {
