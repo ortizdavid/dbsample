@@ -1,0 +1,11 @@
+
+GOOS=windows go build -o ../bin/windows/dbsample.exe &&
+
+GOOS=linux go build -o ../bin/linux/dbsample &&
+
+GOOS=darwin go build -o ../bin/macos/dbsample &&
+
+GOOS=freebsd go build -o ../bin/freebsd/dbsample &&
+
+GOOS=solaris go build -o ../bin/solaris/dbsample 
+
