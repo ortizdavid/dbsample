@@ -28,7 +28,7 @@ func (trg TriggerGenerator) Generate(sampleName string, rdb string) {
 			contentFile = sample.GetTriggerMinimalSample(rdb)
 		}
 		fileManager.WriteFile(destFolder, file, contentFile)
-		messages.Success("Procedure '" + sampleName + "' Generated Successfully!")
+		messages.Success("Trigger '" + sampleName + "' Generated Successfully!")
 	} else {
 		messages.Error("Trigger '"+sampleName+"' does not exists!")
 	}

@@ -3,7 +3,6 @@
 Command Line Application to generate database templates/examples.
 
 
-
 ## Main Features
 - Generate database templates
 - Generate normalizated database templates
@@ -12,8 +11,8 @@ Command Line Application to generate database templates/examples.
 - Generate Triggers
 
 
-
 ## Installation
+- Link: https://github.com/ortizdavid/dbsample
 - Download binary file:
   + [Windows](bin/windows)
   + [Linux](bin/linux)
@@ -26,13 +25,11 @@ Command Line Application to generate database templates/examples.
 dbsample
 `
 
-
 ## Usage
 dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DATABASE>**
 
 
-
-### Samples
+## Samples
 - **db-user-roles** -  Database with Users and Roles
 - **db-countries** -  All Countries and Cities
 - **db-people** -  Database People Tables Structure
@@ -46,7 +43,6 @@ dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DA
 - **sp-min** -  Minimal Procedure Sample, including transactions
 
 
-
 ## Sample Types
 - **database** - Database
 - **procedure** - Stored Procedure
@@ -54,11 +50,9 @@ dbsample -sample **<SAMPLE_NAME>** -type **<SAMPLE_TYPE>** -rdb **<RELATIONAL_DA
 - **view** - SQL View
 
 
-
 ## Relational Databases
 - **mysql** - MySQL        
 - **postgres** - PostgreSQL
-
 
 
 ## Generating Databases
@@ -79,7 +73,6 @@ dbsample -sample db-user-roles -type database -rdb mysql
 ```
 
 
-
 ## Gernerating Views
 ```console
 dbsample -sample trg-lock-insert -type trigger -rdb postgres
@@ -90,7 +83,6 @@ dbsample -sample trg-min -type trigger -rdb mysql
 ```
 
 
-
 ## Generating Stored Procedures
 ```console
 dbsample -sample sp-product-stock -type procedure -rdb postgres
@@ -99,7 +91,6 @@ dbsample -sample sp-product-stock -type procedure -rdb postgres
 ```console
 dbsample -sample sp-min -type procedure -rdb mysql
 ```
-
 
 ## Generating Triggers
 ```console

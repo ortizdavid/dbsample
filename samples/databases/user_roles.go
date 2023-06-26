@@ -33,14 +33,12 @@ CREATE TYPE TYPE_USER_STATUS AS ENUM('Yes', 'No');
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    role_id INT NOT NULL,
     user_name VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(200) NOT NULL,
     active TYPE_USER_STATUS NOT NULL DEFAULT 'Yes',
     unique_id UUID NOT NULL DEFAULT gen_random_uuid(),
     created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW(),
-    CONSTRAINT fk_role_user FOREIGN KEY(role_id) REFERENCES roles(role_id)
+    updated_at TIMESTAMP DEFAULT NOW()
 );
 
 DROP TABLE IF EXISTS user_roles;
@@ -101,14 +99,12 @@ CREATE TABLE roles (
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    role_id INT NOT NULL,
     user_name VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(200) NOT NULL,
     active ENUM('Yes', 'No') NOT NULL DEFAULT 'Yes',
     unique_id BINARY(32) DEFAULT (UUID()),
     created_at DATETIME DEFAULT NOW(),
-    updated_at DATETIME DEFAULT NOW(),
-    CONSTRAINT fk_role FOREIGN KEY(role_id) REFERENCES roles(role_id)
+    updated_at DATETIME DEFAULT NOW()
 );
 
 DROP TABLE IF EXISTS user_roles;

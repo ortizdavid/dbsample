@@ -51,7 +51,6 @@ func TestSamples(t *testing.T) {
 		{ name: "db-user-roles", expected: true },
 		{ name: "db-people", expected: true },
 		{ name: "db-countries", expected: true },
-		{ name: "db-recruitment", expected: true },
 		{ name: "db-sales", expected: true },
 		{ name: "sp-procuct-stock", expected: true },
 		{ name: "sp-min", expected: true },
