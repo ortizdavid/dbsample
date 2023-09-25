@@ -52,6 +52,7 @@ func TestSamples(t *testing.T) {
 		{ name: "db-people", expected: true },
 		{ name: "db-countries", expected: true },
 		{ name: "db-sales", expected: true },
+		{ name: "db-recruitment", expected: true },
 		{ name: "sp-procuct-stock", expected: true },
 		{ name: "sp-min", expected: true },
 		{ name: "view-product-data", expected: true },
@@ -123,7 +124,7 @@ func TestRelationalDBs(t *testing.T) {
 	for _, test := range testCases {
 		got := argument.Contains(argument.GetRelationalDBs(), test.name)
 		if got != test.expected {
-			t.Errorf("Reletional Database '%s' does not exists! Expected: %t,  Got: %t", test.name, test.expected, got)
+			t.Errorf("Relational Database '%s' does not exists! Expected: %t,  Got: %t", test.name, test.expected, got)
 		}
 	}
 }

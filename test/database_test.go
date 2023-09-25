@@ -10,6 +10,7 @@ func TestGenerateDatabaseMySQL(t *testing.T) {
 		{ name: "db-countries", sType: "database", rdb: "mysql", expected: true },
 		{ name: "db-people", sType: "database", rdb: "mysql", expected: true },
 		{ name: "db-sales", sType: "database", rdb: "mysql", expected: true },
+		{ name: "db-recruitment", sType: "database", rdb: "mysql", expected: true },
 	}
 	for _, test := range testCases {
 		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)
@@ -25,6 +26,7 @@ func TestGenerateDatabasePostgreSQL(t *testing.T) {
 		{ name: "db-countries", sType: "database", rdb: "postgres", expected: true },
 		{ name: "db-people", sType: "database", rdb: "postgres", expected: true },
 		{ name: "db-sales", sType: "database", rdb: "postgres", expected: true },
+		{ name: "db-recruitment", sType: "database", rdb: "postgres", expected: true },
 	}
 	for _, test := range testCases {
 		got := sampleGenerator.Generate(test.name, test.sType, test.rdb)

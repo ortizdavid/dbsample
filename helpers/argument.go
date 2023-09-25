@@ -26,7 +26,7 @@ func (argument *Argument) GetSamples() []Argument {
 		{ Name: "db-user-roles", ArgType: "database", Description: "Database with Users and Roles" },
 		{ Name: "db-countries", ArgType: "database", Description: "All Countries and Cities" },
 		{ Name: "db-people", ArgType: "database", Description: "Database People Tables Structure" },
-		//{ Name: "db-recruitment", ArgType: "database", Description: "Database for Recruitment System" },
+		{ Name: "db-recruitment", ArgType: "database", Description: "Database for Recruitment System" },
 		{ Name: "db-sales", ArgType: "database", Description: "Database for Sales" },
 		{ Name: "view-product-data", ArgType: "view", Description: "SQL View Product normalizated data Sample" },
 		{ Name: "view-min", ArgType: "view", Description: "Minimal SQL View Sample" },

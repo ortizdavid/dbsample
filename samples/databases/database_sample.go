@@ -11,7 +11,7 @@ case "mysql":
 strDB += `--- DATABASE: db_user_roles
 --- RDBMS MySQL---
 
-CREATE DATABASE `+dbName+`
+CREATE DATABASE IF NOT EXISTS `+dbName+`
 USE `+dbName+`;
 
 `

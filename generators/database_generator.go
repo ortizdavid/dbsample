@@ -30,6 +30,8 @@ func (db DatabaseGenerator) Generate(sampleName string, rdb string) {
 			contentFile = sample.GetSalesSample(rdb)
 		case "db-countries":
 			contentFile = sample.GetCountriesSample(rdb)
+		case "db-recruitment":
+			contentFile = sample.GetRecruitmentSample(rdb)
 		}
 		fileManager.WriteFile(destFolder, file, contentFile)
 		messages.Success("Database '" + sampleName + "' Generated Successfully!")

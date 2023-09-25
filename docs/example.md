@@ -1,4 +1,4 @@
-Run these commands in terminal
+# Run these commands in terminal
 
 
 # GENERATING DATABASES:
