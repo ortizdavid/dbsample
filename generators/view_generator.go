@@ -3,8 +3,8 @@ package generators
 import (
 	"github.com/ortizdavid/dbsample/helpers"
 	samples "github.com/ortizdavid/dbsample/samples/views"
-	"github.com/ortizdavid/filemanager/core"
-	"github.com/ortizdavid/message-helper/messages"
+	"github.com/ortizdavid/go-nopain/filemanager"
+	"github.com/ortizdavid/go-nopain/messages"
 )
 
 type ViewGenerator struct {
@@ -13,7 +13,7 @@ type ViewGenerator struct {
 func (view ViewGenerator) Generate(sampleName string, rdb string) {
 	var argument *helpers.Argument
 	var sample *samples.ViewSample
-	fileManager := core.FileManager{}
+	var fileManager filemanager.FileManager
 
 	if argument.ContainsSample(argument.GetSamples(), sampleName, "view") == true {
 		destFolder := sampleName+"-"+rdb

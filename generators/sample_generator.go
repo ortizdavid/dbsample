@@ -2,7 +2,7 @@ package generators
 
 import (
 	"github.com/ortizdavid/dbsample/helpers"
-	"github.com/ortizdavid/message-helper/messages"
+	"github.com/ortizdavid/go-nopain/messages"
 )
 
 type SampleGenerator struct {

@@ -3,8 +3,8 @@ package generators
 import (
 	"github.com/ortizdavid/dbsample/helpers"
 	samples "github.com/ortizdavid/dbsample/samples/databases"
-	"github.com/ortizdavid/filemanager/core"
-	"github.com/ortizdavid/message-helper/messages"
+	"github.com/ortizdavid/go-nopain/filemanager"
+	"github.com/ortizdavid/go-nopain/messages"
 )
 
 type DatabaseGenerator struct {
@@ -13,7 +13,7 @@ type DatabaseGenerator struct {
 func (db DatabaseGenerator) Generate(sampleName string, rdb string) {
 	var argument *helpers.Argument
 	var sample *samples.DatabaseSample
-	fileManager := core.FileManager{}
+	var fileManager filemanager.FileManager
 
 	if argument.ContainsSample(argument.GetSamples(), sampleName, "database") == true {
 		destFolder := sampleName+"-"+rdb

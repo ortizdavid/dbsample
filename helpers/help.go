@@ -8,6 +8,7 @@ var argument *Argument
 
 func PrintHelp() {
 	fmt.Println("HELP:")
+	argument.PrintArguments(argument.GetFlags())
 	
 }
 

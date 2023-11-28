@@ -3,8 +3,8 @@ package generators
 import (
 	"github.com/ortizdavid/dbsample/helpers"
 	samples "github.com/ortizdavid/dbsample/samples/triggers"
-	"github.com/ortizdavid/filemanager/core"
-	"github.com/ortizdavid/message-helper/messages"
+	"github.com/ortizdavid/go-nopain/filemanager"
+	"github.com/ortizdavid/go-nopain/messages"
 )
 
 type TriggerGenerator struct {
@@ -13,7 +13,7 @@ type TriggerGenerator struct {
 func (trg TriggerGenerator) Generate(sampleName string, rdb string) {
 	var argument *helpers.Argument
 	var sample *samples.TriggerSample
-	fileManager := core.FileManager{}
+	var fileManager filemanager.FileManager
 	
 	if argument.ContainsSample(argument.GetSamples(), sampleName, "trigger") == true {
 		destFolder := sampleName+"-"+rdb

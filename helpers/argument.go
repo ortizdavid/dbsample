@@ -76,3 +76,4 @@ func (argument *Argument) PrintArguments(args []Argument) {
 		fmt.Printf("\t%s ----- %s\n", arg.Name, arg.Description)
 	}
 }
+

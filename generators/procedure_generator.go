@@ -3,8 +3,8 @@ package generators
 import (
 	"github.com/ortizdavid/dbsample/helpers"
 	samples "github.com/ortizdavid/dbsample/samples/procedures"
-	"github.com/ortizdavid/filemanager/core"
-	"github.com/ortizdavid/message-helper/messages"
+	"github.com/ortizdavid/go-nopain/filemanager"
+	"github.com/ortizdavid/go-nopain/messages"
 )
 
 type ProcedureGenerator struct {
@@ -13,7 +13,7 @@ type ProcedureGenerator struct {
 func (proc ProcedureGenerator) Generate(sampleName string, rdb string) {
 	var argument *helpers.Argument
 	var sample *samples.ProcedureSample
-	fileManager := core.FileManager{}
+	var fileManager filemanager.FileManager
 
 	if argument.ContainsSample(argument.GetSamples(), sampleName, "procedure") == true {
 		destFolder := sampleName+"-"+rdb
